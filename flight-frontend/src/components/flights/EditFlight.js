@@ -1,44 +1,44 @@
 import { React, useState ,useEffect} from "react";
 import {useHistory,useParams} from 'react-router-dom';
 import axios from "axios";
-const EditUser =()=>{
+const EditFlight =()=>{
     let history = useHistory();
     const {id} = useParams();
-    const [user,setUser] =useState({
+    const [flight,setFlight] =useState({
         name:"",
-        username:"",
+        flightname:"",
         email:"",
         phone:"",
         website:""
 
     });
-   const {name,username,email,phone,website} =user;
+   const {name,flightname,email,phone,website} =flight;
     const onInputChange=(e)=>{
-        setUser({...user, [e.target.name]:e.target.value})
+        setFlight({...flight, [e.target.name]:e.target.value})
     }
     useEffect(()=>{
-    loadUser();
+    loadFlight();
     },[])
     const onSubmit=async (e)=>{
         e.preventDefault(); 
-        await axios.put(`http://localhost:3003/users/${id}`,user);
+        await axios.put(`http://localhost:3003/flights/${id}`,flight);
         history.push("/")
         
 
     }
     useEffect(()=>{
-        loadUser();
+        loadFlight();
     })
-    const loadUser =async()=>{
-        const result =await axios.get(`http://localhost:3003/users/${id}`)
+    const loadFlight =async()=>{
+        const result =await axios.get(`http://localhost:3003/flights/${id}`)
        // console.log(result)
-      setUser(result.data);
+      setFlight(result.data);
     }
     return(
         
         <div className="container"> 
         <div className="w-75 mx-auto shadow p-5 ">
-        <h1 className="text-center mb-4">Edit A User</h1>
+        <h1 className="text-center mb-4">Edit A Flight</h1>
         <form onSubmit={e=>onSubmit(e)}>
         <div className="form-group">
          <input
@@ -55,9 +55,9 @@ const EditUser =()=>{
          <input
          type="text"
          className="form-control form-control-lg"
-         placeholder="Enter Your Username"
-         name="username"
-         value={username}
+         placeholder="Enter Your Flightname"
+         name="flightname"
+         value={flightname}
          onChange={e=>onInputChange(e)}
          />
      </div>
@@ -94,11 +94,11 @@ const EditUser =()=>{
          />
      </div>
   
-  <button type="submit" className="btn btn-primary">Update User</button>
+  <button type="submit" className="btn btn-primary">Update Flight</button>
 </form>
         </div></div>
     )
 }
 
 
-export default EditUser;
+export default EditFlight;

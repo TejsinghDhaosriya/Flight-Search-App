@@ -22,7 +22,7 @@ const Navbar =()=>{
 
      </ul>
     </div>
-    <NavLink className="btn btn-outline-dark" to="/users/add">Add User</NavLink>
+    <NavLink className="btn btn-outline-dark" to="/flights/add">Add Flight</NavLink>
     </div>
 </nav>
   )

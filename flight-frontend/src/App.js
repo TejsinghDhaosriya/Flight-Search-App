@@ -7,8 +7,8 @@ import About from './components/pages/About';
 import { BrowserRouter as Router ,Route,Switch} from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import NotFoundPage from './components/pages/NotFoundPage';
-import AddUser from './components/users/AddUser';
-import EditUser from './components/users/EditUser';
+import AddUser from './components/flights/AddFlight';
+import EditUser from './components/flights/EditFlight';
 
 function App() {
   return (
