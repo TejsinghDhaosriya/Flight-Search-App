@@ -23,7 +23,7 @@ const AddUser =()=>{
    arrival_city,
    arrival_time} =flight;
     const onInputChange=(e)=>{
-        setUser({...flight, [e.target.name]:e.target.value,departure_time:value,arrival_time:value2})
+        setUser({...flight, [e.target.name]:e.target.value,departure_time:value2})
         console.log(flight)
     }
     const onSubmit=async (e)=>{
@@ -77,9 +77,9 @@ const AddUser =()=>{
          value={departure_time}
          onChange={e=>onInputChange(e)}
          />
-         <DateTimePicker
-        onChange={onChange}
-        value={value}
+          <DateTimePicker
+        onChange={onChange2}
+        value={value2}
         name="departure_time"
       />
      </div>
@@ -104,9 +104,9 @@ const AddUser =()=>{
          value={arrival_time}
          onChange={e=>onInputChange(e)}
          />
-       <DateTimePicker
-        onChange={onChange2}
-        value={value2}
+      <DateTimePicker
+        onChange={onChange}
+        value={value}
         name="arrival_time"
       />
      </div>
