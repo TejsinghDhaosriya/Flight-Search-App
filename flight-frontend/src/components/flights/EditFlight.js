@@ -1,7 +1,10 @@
 import { React, useState ,useEffect} from "react";
 import {useHistory,useParams} from 'react-router-dom';
 import axios from "axios";
+import { baseURL } from "../.././baseUrl";
+import DateTimePicker from 'react-datetime-picker';
 const EditFlight =()=>{
+    const [value, onChange] = useState(new Date());
     let history = useHistory();
     const {id} = useParams();
     const [flight,setFlight] =useState({
@@ -21,7 +24,7 @@ const EditFlight =()=>{
     },[])
     const onSubmit=async (e)=>{
         e.preventDefault(); 
-        await axios.put(`http://localhost:3003/flights/${id}`,flight);
+        await axios.put(`${baseURL}flight-update/${id}`,flight);
         history.push("/")
         
 
@@ -30,7 +33,7 @@ const EditFlight =()=>{
         loadFlight();
     })
     const loadFlight =async()=>{
-        const result =await axios.get(`http://localhost:3003/flights/${id}`)
+        const result =await axios.get(`${baseURL}flight-list`)
        // console.log(result)
       setFlight(result.data);
     }
@@ -60,6 +63,12 @@ const EditFlight =()=>{
          value={flightname}
          onChange={e=>onInputChange(e)}
          />
+         <div>
+      <DateTimePicker
+        onChange={onChange}
+        value={value}
+      />
+    </div>
      </div>
      <div className="form-group">
          <input
