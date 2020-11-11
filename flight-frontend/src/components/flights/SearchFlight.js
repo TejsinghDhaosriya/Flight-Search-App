@@ -5,13 +5,9 @@ import axios from "axios";
 import { baseURL } from "../.././baseUrl";
 import DateTimePicker from 'react-datetime-picker';
 
-let data_in =[]
 const SearchFlight =()=>{
-    let resultw=[]
-    // const [value] = useState(new Date());
-    // const [value2] = useState(new Date());
+
     //output loading
-  const[output_list,setOutput]=useState([]);
 
     let history = useHistory();
     const [flight,setUser] =useState({
@@ -25,18 +21,16 @@ const SearchFlight =()=>{
     });
     const onInputChange=(e)=>{
         setUser({...flight, [e.target.name]:e.target.value})
-        console.log(flight)
     }
     const onChange2 = e => {
         setUser({...flight, departure_time:e})
       };
 
-      const onChange = e => {
-        setUser({...flight, arrival_time:e})
-      };
+    //   const onChange = e => {
+    //     setUser({...flight, arrival_time:e})
+    //   };
     const onSubmit=async (e)=>{
 
-        console.log(flight)
         // return
         e.preventDefault(); 
         
@@ -49,11 +43,6 @@ const SearchFlight =()=>{
         // console.log(flight.arrival_time)
     
         const result =await axios.post(`${baseURL}flight-search/`,flight);
-        console.log('Yahi chaiya tha --------',result.data.data)
-        console.log(result.data.data)
-        // output_data=result.data.data
-        // output_len = result.data.data.length
-        console.log('Yahi chaiya tha --------',result.data.data.length)
         // history.push("/")
         const st =async()=>{
         for(var i=1;i<=(result.data.data.length);i++)
@@ -65,10 +54,12 @@ const SearchFlight =()=>{
           st().then(()=>{
             console.log('################################################')
             console.log(result.data.data)
-            resultw.push('mhoan')
+            let len =result.data.data.length;
+            if(len!==0){
             // setOutput(result.data.data);
             var tables=""
             var header ="<tr>"+
+            " <th scope='col'>"+"flight_number"+"</th>"+
            " <th scope='col'>"+"departure_city"+"</th>"+
            "<th scope='col'>"+"departure_time"+"</th>"+
             "<th scope='col'>"+"arrival_city"+"</th>"+
@@ -78,6 +69,7 @@ const SearchFlight =()=>{
             for(var i=1;i<=(result.data.data.length);i++)
           {
             tables += "<tr>" +
+            "<td>" + temp[i-1].number + "</td>" +
             "<td>" + temp[i-1].departure_city + "</td>" +
             "<td>" + temp[i-1].departure_time + "</td>" +
             "<td>" + temp[i-1].arrival_city + "</td>" +
@@ -85,11 +77,16 @@ const SearchFlight =()=>{
             "</tr>";
           
           }
-          document.getElementById('topper').innerHTML='Flight Information';   
+          document.getElementById('topper').innerHTML='BEST FLIGHT PLAN';   
           
           document.getElementById('travel-header').innerHTML='<table>'+header+'</table';   
           document.getElementById('travel').innerHTML='<table>'+tables+'</table';
-          
+        }
+        else
+          {
+            document.getElementById('topper').innerHTML='NO FLIGHT AVAILABLE';   
+              
+          }
 
           });
           
@@ -97,7 +94,6 @@ const SearchFlight =()=>{
         
 
     }
-    console.log('22222222222222------------',resultw)
   
     return(
         

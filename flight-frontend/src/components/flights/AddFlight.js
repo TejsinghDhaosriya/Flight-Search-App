@@ -5,8 +5,8 @@ import axios from "axios";
 import { baseURL } from "../.././baseUrl";
 import DateTimePicker from 'react-datetime-picker';
 const AddUser =()=>{
-    const [value] = useState(new Date());
-    const [value2] = useState(new Date());
+    // const [value] = useState(new Date());
+    // const [value2] = useState(new Date());
     let history = useHistory();
     const [flight,setUser] =useState({
         number:"",
@@ -17,11 +17,11 @@ const AddUser =()=>{
         arrival_time:new Date()
 
     });
-   const {number,
-   departure_city,
-   departure_time,
-   arrival_city,
-   arrival_time} =flight;
+  //  const {number,
+  //  departure_city,
+  //  departure_time,
+  //  arrival_city,
+  //  arrival_time} =flight;
     const onInputChange=(e)=>{
         setUser({...flight, [e.target.name]:e.target.value})
         console.log(flight)
@@ -65,7 +65,7 @@ const AddUser =()=>{
          className="form-control form-control-lg"
          placeholder="Enter Your Name"
          name="number"
-         value={number}
+         value={flight.number}
          onChange={e=>onInputChange(e)}
 
          />
@@ -76,7 +76,7 @@ const AddUser =()=>{
          className="form-control form-control-lg"
          placeholder="Departure City"
          name="departure_city"
-         value={departure_city}
+         value={flight.departure_city}
          onChange={e=>onInputChange(e)}
          />
      </div>
@@ -101,7 +101,7 @@ const AddUser =()=>{
          className="form-control form-control-lg"
          placeholder="Arrival City"
          name="arrival_city"
-         value={arrival_city}
+         value={flight.arrival_city}
          onChange={e=>onInputChange(e)}
          />
      </div>

@@ -3,13 +3,12 @@ import {useHistory,useParams} from 'react-router-dom';
 import axios from "axios";
 
 import { baseURL } from "../.././baseUrl";
-import DateTimePicker from 'react-datetime-picker';
 
 
 const EditUser =()=>{
    const {id} = useParams();
-    const [value] = useState(new Date());
-    const [value2] = useState(new Date());
+    // const [value] = useState(new Date());
+    // const [value2] = useState(new Date());
     let history = useHistory();
     const [flight,setFlight] =useState({
         number:"",
@@ -19,22 +18,22 @@ const EditUser =()=>{
         arrival_time:new Date()
 
     });
-   const {number,
-   departure_city,
-   departure_time,
-   arrival_city,
-   arrival_time} =flight;
+  //  const {number,
+  //  departure_city,
+  //  departure_time,
+  //  arrival_city,
+  //  arrival_time} =flight;
     const onInputChange=(e)=>{
         setFlight({...flight, [e.target.name]:e.target.value})
         console.log(flight)
     }
-    const onChange2 = e => {
-        setFlight({...flight, departure_time:e})
-      };
+    // const onChange2 = e => {
+    //     setFlight({...flight, departure_time:e})
+    //   };
 
-      const onChange = e => {
-        setFlight({...flight, arrival_time:e})
-      };
+    //   const onChange = e => {
+    //     setFlight({...flight, arrival_time:e})
+    //   };
       useEffect(()=>{
         loadFlight();
         
@@ -78,7 +77,7 @@ const EditUser =()=>{
          className="form-control form-control-lg"
          placeholder="Enter Your Name"
          name="number"
-         value={number}
+         value={flight.number}
          onChange={e=>onInputChange(e)}
 
          />
@@ -89,7 +88,7 @@ const EditUser =()=>{
          className="form-control form-control-lg"
          placeholder="Departure City"
          name="departure_city"
-         value={departure_city}
+         value={flight.departure_city}
          onChange={e=>onInputChange(e)}
          />
      </div>
@@ -114,7 +113,7 @@ const EditUser =()=>{
          className="form-control form-control-lg"
          placeholder="Arrival City"
          name="arrival_city"
-         value={arrival_city}
+         value={flight.arrival_city}
          onChange={e=>onInputChange(e)}
          />
      </div>
