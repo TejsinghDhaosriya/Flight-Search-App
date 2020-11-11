@@ -18,7 +18,7 @@ const Home=()=>{
         setFlight(result.data.reverse());
     }
     const deleteFlight=async id=>{
-        await axios.delete(`${baseURL}flight-delete/${id}`);
+        await axios.delete(`${baseURL}flight-delete/${id}/`);
         loadFlights();
     }
     return(
