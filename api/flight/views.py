@@ -53,7 +53,7 @@ def flightCreate(request):
     
 
 
-@api_view(['POST'])
+@api_view(['PUT'])
 def flightUpdate(request,pk):
     flight = Flight.objects.get(id=pk)
     serializer = FlightSerializer(instance= flight,data=request.data)
@@ -78,9 +78,11 @@ def flightSearch(request):
     #     return Response(serializer.data)
     # else:
     #     return Response("Not Available Flight Plan")
+    print('Body datta............')
+    print(request.data)
     all_flight_info = Flight.objects.all()
-    print(all_flight_info)
-    print(len(all_flight_info))
+    # print(all_flight_info)
+    # print(len(all_flight_info))
     print(all_flight_info[0].number)
 
     from collections import defaultdict
@@ -107,7 +109,7 @@ def flightSearch(request):
     
     edges = []
     for element in all_flight_info:
-        edges.append((element.departure_city,element.arrival_city,(element.departure_time - element.arrival_time)))
+        edges.append((element.departure_city,element.arrival_city,(element.arrival_time - element.departure_time)))
     print(edges)
     #     ('X', 'A', 7),
     #     ('X', 'B', 2),
@@ -172,5 +174,5 @@ def flightSearch(request):
         
         
         
-    print(dijsktra(graph, 'Delhi', 'Sonkatch'))
+    print(dijsktra(graph,request.data.get("departure_city"),request.data.get("departure_city")))
     return Response("Hi")

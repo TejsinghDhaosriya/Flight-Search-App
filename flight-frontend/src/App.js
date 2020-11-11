@@ -9,9 +9,8 @@ import Navbar from './components/layout/Navbar';
 import NotFoundPage from './components/pages/NotFoundPage';
 import AddUser from './components/flights/AddFlight';
 import EditUser from './components/flights/EditFlight';
-// import TimeDate from './components/layout/TimeDate';
-// import moment from 'moment';
-import { TimePicker } from 'antd';
+
+import SearchFlight from './components/flights/SearchFlight';
 
 function App() {
   return (
@@ -26,6 +25,7 @@ function App() {
       <Route exact path="/about" component={About}></Route>
       <Route exact path="/flights/add" component={AddUser}></Route>
       <Route exact path="/flights/edit/:id" component={EditUser}></Route>
+      <Route exact path="/flights/search-flight" component={SearchFlight}></Route>
       <Route component={NotFoundPage}></Route>
        </Switch>
       </div>

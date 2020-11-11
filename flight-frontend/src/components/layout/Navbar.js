@@ -18,7 +18,10 @@ const Navbar =()=>{
      
       <li className="nav-item">
         <NavLink className="nav-link" exact to="/contact">Contact</NavLink>
-      </li>
+      </li> 
+      <li className="nav-item">
+        <NavLink className="nav-link" exact to="/flights/search-flight">Search Flights</NavLink>
+      </li> 
 
      </ul>
     </div>
