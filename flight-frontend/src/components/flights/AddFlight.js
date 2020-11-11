@@ -5,16 +5,16 @@ import axios from "axios";
 import { baseURL } from "../.././baseUrl";
 import DateTimePicker from 'react-datetime-picker';
 const AddUser =()=>{
-    const [value, onChange] = useState(new Date());
-    const [value2, onChange2] = useState(new Date());
-    console.log(value)
+    const [value] = useState(new Date());
+    const [value2] = useState(new Date());
     let history = useHistory();
     const [flight,setUser] =useState({
         number:"",
         departure_city:"",
-        departure_time:"",
         arrival_city:"",
-        arrival_time:""
+
+        departure_time:new Date(),
+        arrival_time:new Date()
 
     });
    const {number,
@@ -23,10 +23,20 @@ const AddUser =()=>{
    arrival_city,
    arrival_time} =flight;
     const onInputChange=(e)=>{
-        setUser({...flight, [e.target.name]:e.target.value,departure_time:value2})
+        setUser({...flight, [e.target.name]:e.target.value})
         console.log(flight)
     }
+    const onChange2 = e => {
+        setUser({...flight, departure_time:e})
+      };
+
+      const onChange = e => {
+        setUser({...flight, arrival_time:e})
+      };
     const onSubmit=async (e)=>{
+
+        console.log(flight)
+        // return
         e.preventDefault(); 
         
         const dt=new Date(flight.departure_time).getTime();
@@ -35,12 +45,14 @@ const AddUser =()=>{
         console.log(flight.arrival_time)
         flight.arrival_time=String(at).substr(0,10)
         
-        console.log(flight.arrival_time)
+        // console.log(flight.arrival_time)
         await axios.post(`${baseURL}flight-create/`,flight);
         history.push("/")
         
 
     }
+    
+  
     return(
         
         <div className="container"> 
@@ -74,12 +86,12 @@ const AddUser =()=>{
          className="form-control form-control-lg"
          placeholder="Enter Your D"
          name="departure_time"
-         value={departure_time}
+         value={flight.departure_time}
          onChange={e=>onInputChange(e)}
          />
           <DateTimePicker
         onChange={onChange2}
-        value={value2}
+        value={flight.departure_time}
         name="departure_time"
       />
      </div>
@@ -101,12 +113,12 @@ const AddUser =()=>{
          className="form-control form-control-lg"
          placeholder="Enter Your Website Name"
          name="arrival_time"
-         value={arrival_time}
+         value={flight.arrival_time}
          onChange={e=>onInputChange(e)}
          />
       <DateTimePicker
         onChange={onChange}
-        value={value}
+        value={flight.arrival_time}
         name="arrival_time"
       />
      </div>
