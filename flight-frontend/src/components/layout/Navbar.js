@@ -21,13 +21,14 @@ const Navbar =()=>{
       </li> 
       
      </ul>
-     <div >
-        <NavLink className="btn btn-outline-dark" exact to="/flights/search-flight">Search Flights</NavLink>
-      </div> 
+      
     
     </div>
     <NavLink className="btn btn-outline-dark" exact to="/flights/add">Add Flight</NavLink>
     </div>
+    <div >
+        <NavLink className="btn btn-outline-dark" exact to="/flights/search-flight">Search Flights</NavLink>
+      </div>
 </nav>
   )
 
