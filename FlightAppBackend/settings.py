@@ -60,7 +60,7 @@ ROOT_URLCONF = 'FlightAppBackend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [],#[os.path.join(BASE_DIR,'flight-frontend/build')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -126,3 +126,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 CORS_ORIGIN_ALLOW_ALL = True   
 APPEND_SLASH=False
+
+
+# STATICFILES_DIRS =[
+#  os.path.join(BASE_DIR,'flight-frontend/build/static')
+# ]

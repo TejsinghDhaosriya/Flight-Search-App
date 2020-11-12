@@ -1,0 +1,6 @@
+gunicorn==19.9.0
+Django==2.1.10
+django-cors-headers==2.2.1
+djangorestframework==3.11.1
+pytz==2019.1
+sqlparse==0.3.0
