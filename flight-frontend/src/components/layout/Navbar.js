@@ -22,11 +22,11 @@ const Navbar =()=>{
       
      </ul>
      <div >
-        <NavLink className="btn btn-outline-dark m-2" exact to="/flights/search-flight">Search Flights</NavLink>
+        <NavLink className="btn btn-outline-dark" exact to="/flights/search-flight">Search Flights</NavLink>
       </div> 
-
+    
     </div>
-    <NavLink className="btn btn-outline-dark" to="/flights/add">Add Flight</NavLink>
+    <NavLink className="btn btn-outline-dark" exact to="/flights/add">Add Flight</NavLink>
     </div>
 </nav>
   )

@@ -75,7 +75,7 @@ const EditUser =()=>{
          <input
          type="text"
          className="form-control form-control-lg"
-         placeholder="Enter Your Name"
+         placeholder="Flight Number"
          name="number"
          value={flight.number}
          onChange={e=>onInputChange(e)}

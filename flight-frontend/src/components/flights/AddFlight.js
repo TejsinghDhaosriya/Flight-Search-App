@@ -63,7 +63,7 @@ const AddUser =()=>{
          <input
          type="text"
          className="form-control form-control-lg"
-         placeholder="Enter Your Name"
+         placeholder="Enter Flight Number"
          name="number"
          value={flight.number}
          onChange={e=>onInputChange(e)}
