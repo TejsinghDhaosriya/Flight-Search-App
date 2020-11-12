@@ -21,7 +21,7 @@ const Navbar =()=>{
       </li> 
       
      </ul>
-     <div className="nav-item">
+     <div >
         <NavLink className="btn btn-outline-dark m-2" exact to="/flights/search-flight">Search Flights</NavLink>
       </div> 
 
