@@ -40,11 +40,11 @@ Backend  :- Django
    
 
 #### Pls visit to above link for demo
-[a link](https://www.youtube.com/watch?v=dNYf_nQgzEc)
+[Link to Video!](https://www.youtube.com/watch?v=dNYf_nQgzEc)
 
 ![Screenshot](screenshot.png)
 
 
 
 ##Project Link :-
-    [a link](https://jettravels.netlify.app)
+    [Link to Project!](https://jettravels.netlify.app)
