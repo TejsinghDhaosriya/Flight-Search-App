@@ -16,8 +16,8 @@ Deployment :-
       Frontend on Netlify
       Backend  on Heroku 
 
-Setup the Project locally :-
-  Backend :-
+Setup the Project locally :- <br/>
+  ***Backend*** :-
    1. Clone the repo
          git clone https://github.com/TejsinghDhaosriya/Flight-Search-App
    2. Inside the Base Directory(inside the root of project) run pip install so that all dependencies of project get install 
@@ -25,7 +25,7 @@ Setup the Project locally :-
    3. Start the Backend
          python manaage.py runserver
    Note :- Backend is by default served at 8000 if due to some reason it is not able to serve at 8000 ,if it is serve at any other port then change the port number in baseURL.js file which is inside at flight-frontend folder.     
-  Frontend:-
+  ***Frontend***:-
   1. Move to flight-frontend folder
        cd flight-frontend
   2. Installing the dependencies 
