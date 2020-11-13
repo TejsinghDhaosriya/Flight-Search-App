@@ -40,7 +40,7 @@ Inside the Project :-
 
 Pls visit to above link for demo
 
-![Screenshot](flight.png)
+![Screenshot](screenshot.png)
 
 
 
