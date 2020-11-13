@@ -69,7 +69,8 @@ def flightDelete (request,pk):
 
     return Response('Item successfully deleted ')
 
-
+########################################Status Not Using ######################################################
+##################### Shortest Path By Sorting  #############################
 @api_view(['POST'])
 def flightSearch(request):
     # tasks=Flight.objects.filter(departure_city=request.data.get("departure_city") , arrival_city=request.data.get("arrival_city"))
@@ -198,6 +199,115 @@ def flightSearch(request):
         
     }
     return Response(data)
+############################################# Shortest Path By ID #############################
+@api_view(['POST'])
+def flightSearch2(request):
+    
+    dt=request.data.get("departure_time") 
+    all_flight_info = Flight.objects.filter(departure_time__gte=dt)
+
+    import collections
+    import heapq
+    check=[]
+    def shortestPath(edges, source, sink):
+        # create a weighted DAG - {node:[(cost,neighbour), ...]}
+        graph = collections.defaultdict(list)
+        link=0;
+        for l, r, c ,inp,fin,unique_id in edges:
+            graph[l].append((c,r,inp,fin,unique_id))
+        #print(graph)
+        # create a priority queue and hash set to store visited nodes
+    
+        queue, visited = [(0, source,[],[],[],[])], [[],[]]
+        heapq.heapify(queue)
+        
+        # traverse graph with BFS
+        while queue:
+            (cost, node, path,inp, fin,unique_id) = heapq.heappop(queue)
+            #print('cost :',cost,'node :',node,'path :',path,'in: ',inp,'fin: ',fin)
+            # visited.append((source,graph[2]))
+            # visit the node if it was not visited before
+            
+            # st =len(visited)
+            # if st==0:
+            #     s=0
+            # else:
+            #     s =visited[(len(visited)-1)][1][1]
+                
+
+            if node not in visited:# and s<=inp:
+                visited.append((node,[inp,fin]))
+                path = path + [node]
+                check.append(unique_id) 
+                print('Path is :  ',path)
+                print('Path is :  ',check)
+                # hit the sink
+                if node == sink:
+                    return (cost, path)
+                # visit neighbours
+                i=0
+                for c, neighbour,inp,fin,unique_id in graph[node]:
+                    s =visited[(len(visited)-1)][1][1]
+                    if type(s)==type([]):
+                        s=0
+                   
+                    if neighbour not in visited and s<=inp:
+                        heapq.heappush(queue, (cost+c, neighbour, path,inp,fin,unique_id))
+                        
+        return str("No Flight Available")
+
+    edges = []
+    for element in all_flight_info:
+        edges.append((element.departure_city,element.arrival_city,(element.arrival_time - element.departure_time),element.departure_time,element.arrival_time,element.id))
+    # print(edges)
+
+    dc=request.data.get("departure_city")    
+    ac=request.data.get("arrival_city") 
+    flight_data = shortestPath(edges,dc,ac)   
+    # print(flight_data)
+    route_cost =flight_data[0]
+    route_data=flight_data[1]
+    route_data_len = len(route_data)
+    total_flights=[]
+    for element in all_flight_info:
+        total_flights.append((element.departure_city,element.arrival_city,(element.arrival_time - element.departure_time),element.departure_time,element.arrival_time,element.number))
+        # print(total_flights)
+
+
+    #sorting the array by 3 position element cost
+
+    def sortSecond(val): 
+        return val[2]  
+    
+    # list1 to demonstrate the use of sorting  
+    # using using second key  
+    list1 = total_flights
+    # sorts the array in ascending according to  
+    # second element 
+    list1.sort(key = sortSecond)  
+    # print('----------------')
+    # print(list1) 
+    final_output=[]
+    arrival_cost =0
+
+    for ids in range(1,len(check)):
+        fR = Flight.objects.get(id=check[ids])
+        final_output.append({'departure_city':fR.departure_city,
+                                      'departure_time':fR.departure_time,
+                                      'arrival_city':fR.arrival_city,
+                                      'arrival_time':fR.arrival_time,
+                                      'number':fR.number
+                                     })        
+
+    print(final_output)
+    data = {
+        'route_cost':route_cost ,
+        'data': final_output
+        
+    }
+    return Response(data)
+
+
 
 
 
