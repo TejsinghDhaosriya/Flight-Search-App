@@ -84,12 +84,11 @@ const AddUser =()=>{
          <input
          type="text"
          className="form-control form-control-lg"
-         placeholder="Enter Your D"
+    
          name="departure_time"
          value={flight.departure_time}
-         onChange={e=>onInputChange(e)}
          />
-          <DateTimePicker
+          <DateTimePicker className="form-control form-control-lg"
         onChange={onChange2}
         value={flight.departure_time}
         name="departure_time"
@@ -114,9 +113,8 @@ const AddUser =()=>{
          placeholder="Enter Your Website Name"
          name="arrival_time"
          value={flight.arrival_time}
-         onChange={e=>onInputChange(e)}
          />
-      <DateTimePicker
+      <DateTimePicker className="form-control form-control-lg"
         onChange={onChange}
         value={flight.arrival_time}
         name="arrival_time"
