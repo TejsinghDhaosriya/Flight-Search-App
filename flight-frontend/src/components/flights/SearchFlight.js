@@ -15,7 +15,7 @@ const SearchFlight =()=>{
         departure_city:"",
         arrival_city:"",
 
-        departure_time:new Date(),
+        departure_time:"",
         arrival_time:new Date()
 
     });
@@ -52,8 +52,6 @@ const SearchFlight =()=>{
            
         }}
           st().then(()=>{
-            console.log('################################################')
-            console.log(result.data.data)
             let len =result.data.data.length;
             if(len!==0){
             // setOutput(result.data.data);
@@ -114,13 +112,12 @@ const SearchFlight =()=>{
      <div className="form-group">
          <input
          type="text"
-         className="form-control form-control-lg"
-         placeholder="Enter Your D"
+         className="form-control form-control-lg nav-link disabled"
+         placeholder="Departure Time"
          name="departure_time"
          value={flight.departure_time}
-         onChange={e=>onInputChange(e)}
          />
-          <DateTimePicker
+          <DateTimePicker className="form-control form-control-lg"
         onChange={onChange2}
         value={flight.departure_time}
         name="departure_time"

@@ -83,7 +83,7 @@ const AddUser =()=>{
      <div className="form-group">
          <input
          type="text"
-         className="form-control form-control-lg"
+         className="form-control form-control-lg nav-link disabled"
     
          name="departure_time"
          value={flight.departure_time}
@@ -109,7 +109,7 @@ const AddUser =()=>{
      <div className="form-group">
          <input
          type="text"
-         className="form-control form-control-lg"
+         className="form-control form-control-lg nav-link disabled"
          placeholder="Enter Your Website Name"
          name="arrival_time"
          value={flight.arrival_time}
