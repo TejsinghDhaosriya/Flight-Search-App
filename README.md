@@ -11,7 +11,6 @@
 ### Technologies
 Frontend :- Reactjs
 Backend  :- Django
-[a link](
 
 ### Deployment :-
       Frontend on Netlify
