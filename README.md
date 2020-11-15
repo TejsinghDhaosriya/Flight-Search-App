@@ -3,7 +3,7 @@
 
 ## Objective of Project 
 
-• Develop a flight search app that finds all the possible flights between two destinations.<br/>
+• Develop a flight search app that finds best the possible flights between two destinations.<br/>
 • Create a table for storing all the flight related information like the flight number,departure and arrival cities and the corresponding departure and arrival       times. <br/>
 • Create an API for inserting new flight information <br/>
 • Create an API for Delete flight information <br/>
